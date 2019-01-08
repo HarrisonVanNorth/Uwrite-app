@@ -1,7 +1,4 @@
 import React, { Component } from 'react';
-import './App.css';
-import Header from './components/Header'
-import Feed from './components/Feed'
 import SplashPage from './components/SplashPage'
 import ProfilePage from './components/ProfilePage'
 
@@ -13,24 +10,26 @@ class App extends Component {
   state = {
     authors: [],
     stories: [],
-    comments: []
+    comments: [],
+    subscribe: []
   }
 
   async componentDidMount() {
-    let res = await fetch('http://localhost:8000/authors')
-    let json = await res.json()
+    let resA = await fetch('http://localhost:8000/authors')
+    let resB = await fetch('http://localhost:8000/stories')
+    let resC = await fetch('http://localhost:8000/comments')
+    let resD = await fetch('http://localhost:8000/subscribe')
+
+    let jsonA = await resA.json()
+    let jsonB = await resB.json()
+    let jsonC = await resC.json()
+    let jsonD = await resD.json()
+
     this.setState({
-      authors: json
-    })
-    res = await fetch('http://localhost:8000/stories')
-    json = await res.json()
-    this.setState({
-      stories: json
-    })
-    res = await fetch('http://localhost:8000/comments')
-    json = await res.json()
-    this.setState({
-      comments: json
+      authors: jsonA,
+      stories: jsonB,
+      comments: jsonC,
+      subscribe: jsonD
     })
   }
 
@@ -63,14 +62,19 @@ class App extends Component {
 
 
   render() {
+    console.log(this.state.subscribe)
     return (
       <Switch>
-      <Route exact path="/" render={() => <SplashPage authors={this.state.authors} />} />
-      <Route exact path="/ProfilePage" render={() => <ProfilePage 
+      <Route exact path="/" render={props => <SplashPage {...props} authors={this.state.authors} />} />
+      <Route exact path="/ProfilePage/:id" render={props => 
+        <ProfilePage
+        {...props}
         authors={this.state.authors} 
         stories={this.state.stories} 
-        comments={this.state.comments}/>} 
-        />
+        comments={this.state.comments}
+        subscribe={this.state.subscribe}
+        />} 
+      />
       </Switch>
     );
   }

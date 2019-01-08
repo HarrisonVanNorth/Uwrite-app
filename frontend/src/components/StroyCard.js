@@ -3,7 +3,6 @@ import { Card, CardImg, CardTitle, CardText } from 'reactstrap';
 
 
 const  StoryCard = ({oneStory, comments, authors}) => {
-  console.log(oneStory)
 
   return (
     <Card body inverse style={{backgroundColor: '#333', borderColor: '#333'}}>

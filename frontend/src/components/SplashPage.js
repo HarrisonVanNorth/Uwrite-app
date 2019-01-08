@@ -1,20 +1,16 @@
 import React from 'react';
 import Header from './Header'
-import RegisterForm from './RegisterForm'
-import { Row, Col } from 'reactstrap';
+import Login from './Login'
+import { Row, Col, Container } from 'reactstrap';
 
-const SplashPage = (data) => {
-  console.log(data)
+const SplashPage = (props) => {
   return (
     <div>
     <Header/>
     <Container>
-    <Row>
+    <Row className='col-6'>
     <Col>
-    <RegisterForm/>
-    </Col>
-    <Col>
-    
+    <Login authors={props.authors} history={props.history}/>
     </Col>
     </Row>
     </Container>

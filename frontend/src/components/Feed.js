@@ -1,9 +1,10 @@
 import React from 'react';
 import StoryCard from './StroyCard'
 
-const Feed = ({authors,stories,comments}) => {
+const Feed = ({authors,stories,comments,subscribedList}) => {
 
-let Card = stories.map((story) => <StoryCard key={story.id} oneStory={story} authors={authors}/> )
+let filteredstories = stories.filter(story => subscribedList.includes(story.author_id))
+let Card = filteredstories.map(story => <StoryCard key={story.id} oneStory={story} authors={authors} comments={comments}/> )
 
   return (
     <div>

@@ -9,7 +9,7 @@ exports.seed = function(knex, Promise) {
           id: 1, 
           user_name: 'James Patterson', 
           user_img: 'https://cdn1.thr.com/sites/default/files/imagecache/landscape_928x523/2015/08/screen_shot_2015-08-02_at_9.11.14_am.jpg', 
-          user_email: 'some@email.com', 
+          user_email: 'g@gmail.com', 
           user_password: 'value',
           bio: "Dont for get to put a bio"
         },
