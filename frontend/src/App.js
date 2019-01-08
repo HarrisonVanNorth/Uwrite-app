@@ -1,5 +1,13 @@
 import React, { Component } from 'react';
 import './App.css';
+import Header from './components/Header'
+import Feed from './components/Feed'
+import SplashPage from './components/SplashPage'
+import ProfilePage from './components/ProfilePage'
+
+// import StoryForm from './components/StoryForm'
+import {Switch, Route} from 'react-router-dom'
+
 
 class App extends Component {
   state = {
@@ -9,12 +17,20 @@ class App extends Component {
   }
 
   async componentDidMount() {
-    const res = await fetch('http://localhost:8000/')
-    const json = await res.json()
+    let res = await fetch('http://localhost:8000/authors')
+    let json = await res.json()
     this.setState({
-      authors: json[0],
-      stories: json[1],
-      comments: json[2]
+      authors: json
+    })
+    res = await fetch('http://localhost:8000/stories')
+    json = await res.json()
+    this.setState({
+      stories: json
+    })
+    res = await fetch('http://localhost:8000/comments')
+    json = await res.json()
+    this.setState({
+      comments: json
     })
   }
 
@@ -44,10 +60,18 @@ class App extends Component {
   //   this.setState({messages: message})
   // }
 
+
+
   render() {
     return (
-      <div>
-      </div>
+      <Switch>
+      <Route exact path="/" render={() => <SplashPage authors={this.state.authors} />} />
+      <Route exact path="/ProfilePage" render={() => <ProfilePage 
+        authors={this.state.authors} 
+        stories={this.state.stories} 
+        comments={this.state.comments}/>} 
+        />
+      </Switch>
     );
   }
 }
