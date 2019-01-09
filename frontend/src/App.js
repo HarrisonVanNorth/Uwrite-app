@@ -11,7 +11,8 @@ class App extends Component {
     authors: [],
     stories: [],
     comments: [],
-    subscribe: []
+    subscribe: [],
+    modal: false
   }
 
   async componentDidMount() {
@@ -33,42 +34,54 @@ class App extends Component {
     })
   }
 
-  //   createMessage = async (input) => {
-  //   const response = await fetch('http://localhost:8082/api/messages', {
-  //     method: 'POST',
-  //     body: JSON.stringify(input),
-  //     headers: {
-  //       'Content-Type': 'application/json',
-  //       'Accept': 'application/json',
-  //     }
-  //   })
-  //   const message = await response.json()
-  //   this.setState({messages: [...this.state.messages, message], modal: false})
-  // }
+  _createStory = async (input) => {
+    const response = await fetch('http://localhost:8000/stories', {
+      method: 'POST',
+      body: JSON.stringify(input),
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+      }
+    })
+    const stories = await response.json()
+    console.log(stories)
+    this.setState({stories: [...this.state.stories, stories], modal: false})
+  }
 
-  // async patchMessage(input) {
-  //   const response = await fetch('http://localhost:8082/api/messages', {
-  //     method: 'PATCH',
-  //     body: JSON.stringify(input),
-  //     headers: {
-  //       'Content-Type': 'application/json',
-  //       'Accept': 'application/json',
-  //     }
-  //   })
-  //   const message = await response.json()
-  //   this.setState({messages: message})
-  // }
+  _patchStory = async (input) => {
+    console.log("input sent")
+    console.log(input)
+    const response = await fetch('http://localhost:8000/stories', {
+      method: 'PATCH',
+      body: JSON.stringify(input),
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+      }
+    })
+    const stories = await response.json()
+    this.setState({stories: stories})
+  }
 
+
+  _toggle = () => {
+    this.setState({
+      modal: !this.state.modal
+    });
+  }
 
 
   render() {
-    console.log(this.state.subscribe)
     return (
       <Switch>
       <Route exact path="/" render={props => <SplashPage {...props} authors={this.state.authors} />} />
       <Route exact path="/ProfilePage/:id" render={props => 
         <ProfilePage
         {...props}
+        modal={this.state.modal}
+        _patchStory={this._patchStory}
+        _createStory={this._createStory}
+        _toggle={this._toggle}
         authors={this.state.authors} 
         stories={this.state.stories} 
         comments={this.state.comments}

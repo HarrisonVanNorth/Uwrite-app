@@ -5,5 +5,28 @@ module.exports = {
     knex('stories').then((results) => {
       res.json(results)
     });
+  },
+
+  create: (req, res) => {
+    console.log("backend")
+    knex('stories').insert({
+      story_img: req.body.img_url,
+      title: req.body.title,
+      content: req.body.content,
+      category: req.body.category,
+      author_id: req.body.author_id
+    }).returning('*').then(story => res.json(story))
+  },
+
+  edit: (req, res) => {
+    console.log("backend")
+    knex('stories').where('id', req.params.id)
+      .insert({
+        story_img: req.body.img_url,
+        title: req.body.title,
+        content: req.body.content,
+        category: req.body.category,
+        author_id: req.body.author_id
+    }).returning('*').then(story => res.json(story))
   }
 }

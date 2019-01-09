@@ -1,7 +1,7 @@
 import React from 'react';
 import {Navbar, NavbarToggler, NavbarBrand} from 'reactstrap';
 
-export default class Header extends React.Component {
+class Header extends React.Component {
 
     state = {
       collapsed: true
@@ -16,7 +16,7 @@ export default class Header extends React.Component {
   render() {
     return (
       <div>
-        <Navbar color="faded" light>
+        <Navbar color="warning" >
           <NavbarBrand href="/" className="mr-auto">UWRITE</NavbarBrand>
           <NavbarToggler onClick={this.toggleNavbar} className="mr-2" />
         </Navbar>
@@ -24,3 +24,5 @@ export default class Header extends React.Component {
     );
   }
 }
+
+export default Header
