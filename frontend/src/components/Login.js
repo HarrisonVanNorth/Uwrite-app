@@ -3,8 +3,8 @@ import { Button, Form, FormGroup, Input } from 'reactstrap';
 
 class Login extends Component {
   state = {
-    emailInput: "",
-    passwordInput: ""
+    emailInput: "g@gmail.com",
+    passwordInput: "value"
   }
   
   _handleChange = (e) => {
@@ -17,7 +17,6 @@ class Login extends Component {
   _handleSubmit = (e) => {
     e.preventDefault()
     let user = this.props.authors.filter(author => this.state.emailInput === author.user_email)
-    console.log(user[0].id)
     if(user[0].id){
       this.props.history.push(`/ProfilePage/${user[0].id}`)
     } else {

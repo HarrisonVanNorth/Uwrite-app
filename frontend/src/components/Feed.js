@@ -7,7 +7,7 @@ let filteredstories = stories.filter(story => subscribedList.includes(story.auth
 let Card = filteredstories.map(story => <StoryCard key={story.id} oneStory={story} authors={authors} comments={comments}/> )
 
   return (
-    <div style={{height: "100%", overflow: "auto"}}>
+    <div style={{height: "50%", overflow: "auto"}}>
       {Card}
     </div>
   )

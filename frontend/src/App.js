@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import SplashPage from './components/SplashPage'
 import ProfilePage from './components/ProfilePage'
+import StoryPage from './components/StoryPage'
 
 // import StoryForm from './components/StoryForm'
 import {Switch, Route} from 'react-router-dom'
@@ -12,7 +13,7 @@ class App extends Component {
     stories: [],
     comments: [],
     subscribe: [],
-    modal: false
+    modal: false,
   }
 
   async componentDidMount() {
@@ -35,6 +36,7 @@ class App extends Component {
   }
 
   _createStory = async (input) => {
+    console.log(input)
     const response = await fetch('http://localhost:8000/stories', {
       method: 'POST',
       body: JSON.stringify(input),
@@ -45,13 +47,11 @@ class App extends Component {
     })
     const stories = await response.json()
     console.log(stories)
-    this.setState({stories: [...this.state.stories, stories], modal: false})
+    this.setState({stories: [...this.state.stories, stories[0]], modal: false})
   }
 
   _patchStory = async (input) => {
-    console.log("input sent")
-    console.log(input)
-    const response = await fetch('http://localhost:8000/stories', {
+    const response = await fetch(`http://localhost:8000/stories/${input.id}`, {
       method: 'PATCH',
       body: JSON.stringify(input),
       headers: {
@@ -60,6 +60,19 @@ class App extends Component {
       }
     })
     const stories = await response.json()
+    this.setState({stories:[...this.state.stories, stories[0]], modalEdit: false})
+  }
+
+    _deleteStory = async (input) => {
+    const response = await fetch(`http://localhost:8000/stories/${input}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+      }
+    })
+    const stories = await response.json()
+
     this.setState({stories: stories})
   }
 
@@ -79,6 +92,7 @@ class App extends Component {
         <ProfilePage
         {...props}
         modal={this.state.modal}
+        _deleteStory={this._deleteStory}
         _patchStory={this._patchStory}
         _createStory={this._createStory}
         _toggle={this._toggle}
@@ -88,6 +102,14 @@ class App extends Component {
         subscribe={this.state.subscribe}
         />} 
       />
+      <Route exact path="/StoryPage/:id" render={props => 
+        <StoryPage 
+        {...props} 
+        stories={this.state.stories}
+        comments={this.state.comments}
+        authors={this.state.authors}
+        />}
+      /> 
       </Switch>
     );
   }

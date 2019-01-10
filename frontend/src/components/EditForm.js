@@ -4,6 +4,7 @@ import { Button, Form, FormGroup, Label, Input} from 'reactstrap';
 class EditForm extends Component {
   
   state = {
+    id: this.props.oneStory.id,
     story_img: this.props.oneStory.story_img,
     title: this.props.oneStory.title,
     content: this.props.oneStory.content,

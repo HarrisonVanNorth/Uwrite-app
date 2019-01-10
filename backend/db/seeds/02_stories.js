@@ -25,6 +25,48 @@ exports.seed = function(knex, Promise) {
           content: 'Disneyland Resort is raising prices ahead of the scheduled opening of a Star Wars-themed expansion, with the cheapest daily ticket costing more than $100.Less than a year ago, prices were raised by up to 18 percent.The prices that took effect Sunday for tickets, annual passes and parking represent increases of up to 25 percent.The Los Angeles Times reports price increases in recent years haven thinned the throngs at Disneyland and nearby California Adventure Park. A one - day, one - park ticket is now $104 for low - demand days, such as May weekdays.Tickets for regular - and peak - demand days are more.',
           category: 'business', 
           author_id: 3
+        },
+        { 
+          story_img: 'http://thoughtforyourpenny.com/wp-content/uploads/Video-Game-Controllers.jpg',
+          title:'Nintendo takes over the world',
+          content: 'According to studies reported in the magazine Nature (August 2017), none of the major industrialised countries had met their pledged commitments and the sum of national pledges was not enough to keep global temperature rise to “well below 2 degrees C” which was the Paris Agreement target. The just-released findings of the Intergovernmental Panel on Climate Change (IPCC) report calls for keeping the global temperature rise to 1.5 degrees C and the reduction of global emissions by 45 per cent by 2030.',
+          category: 'video games', 
+          author_id: 1
+        },
+        { 
+          story_img: 'https://www.fairobserver.com/wp-content/uploads/2018/04/Fritjof-Capra-physics-news-ecodesign-science-news-938x450.jpg',
+          title: 'Tim Alin hooks car engine to washing maching!',
+          content: 'According to studies reported in the magazine Nature (August 2017), none of the major industrialised countries had met their pledged commitments and the sum of national pledges was not enough to keep global temperature rise to “well below 2 degrees C” which was the Paris Agreement target. The just-released findings of the Intergovernmental Panel on Climate Change (IPCC) report calls for keeping the global temperature rise to 1.5 degrees C and the reduction of global emissions by 45 per cent by 2030.',
+          category: 'science', 
+          author_id: 1
+        },
+        { 
+          story_img: 'https://spiritanroma.org/wp-content/uploads/2018/01/world-news.jpg',
+          title: 'World News in Places I have never been!',
+          content: 'According to studies reported in the magazine Nature (August 2017), none of the major industrialised countries had met their pledged commitments and the sum of national pledges was not enough to keep global temperature rise to “well below 2 degrees C” which was the Paris Agreement target. The just-released findings of the Intergovernmental Panel on Climate Change (IPCC) report calls for keeping the global temperature rise to 1.5 degrees C and the reduction of global emissions by 45 per cent by 2030.',
+          category: 'world', 
+          author_id: 1
+        },
+                { 
+          story_img: 'https://ichef.bbci.co.uk/images/ic/1200x675/p014g58y.jpg',
+          title: 'World News in Places I have never been!',
+          content: 'According to studies reported in the magazine Nature (August 2017), none of the major industrialised countries had met their pledged commitments and the sum of national pledges was not enough to keep global temperature rise to “well below 2 degrees C” which was the Paris Agreement target. The just-released findings of the Intergovernmental Panel on Climate Change (IPCC) report calls for keeping the global temperature rise to 1.5 degrees C and the reduction of global emissions by 45 per cent by 2030.',
+          category: 'world', 
+          author_id: 2
+        }, 
+        {
+          story_img: 'https://www.top13.net/wp-content/uploads/2015/10/perfectly-timed-cat-photos-funny-cover.jpg',
+          title: 'Super cats!',
+          content: 'According to studies reported in the magazine Nature (August 2017), none of the major industrialised countries had met their pledged commitments and the sum of national pledges was not enough to keep global temperature rise to “well below 2 degrees C” which was the Paris Agreement target. The just-released findings of the Intergovernmental Panel on Climate Change (IPCC) report calls for keeping the global temperature rise to 1.5 degrees C and the reduction of global emissions by 45 per cent by 2030.',
+          category: 'world',
+          author_id: 3
+        }, 
+        {
+          story_img: 'http://www.tonsofbuzz.com/wp-content/uploads/2016/01/funny-cat-pictures-027-021.jpg',
+          title: 'Why so serious!',
+          content: 'According to studies reported in the magazine Nature (August 2017), none of the major industrialised countries had met their pledged commitments and the sum of national pledges was not enough to keep global temperature rise to “well below 2 degrees C” which was the Paris Agreement target. The just-released findings of the Intergovernmental Panel on Climate Change (IPCC) report calls for keeping the global temperature rise to 1.5 degrees C and the reduction of global emissions by 45 per cent by 2030.',
+          category: 'world',
+          author_id: 2
         }
       ]);
     });

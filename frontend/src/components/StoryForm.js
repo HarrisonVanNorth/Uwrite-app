@@ -13,9 +13,9 @@ class StoryForm extends Component {
 
   _handleChange = (e) => {
   const {target} = e
-      this.setState(() => {
-    return {[target.name]: target.value}
-  })
+    this.setState(() => {
+      return {[target.name]: target.value}
+    })
   }
 
   _handleSubmit = (e) => {

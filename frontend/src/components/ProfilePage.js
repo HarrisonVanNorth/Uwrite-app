@@ -21,19 +21,18 @@ const ProfilePage = (props) => {
           <Col>
             {!user ? <p>Loading</p> : 
               <ProfileCard 
-              user={user} 
+              user={user}
               _toggle={props._toggle} 
-              modal={props.modal} 
               _createStory={props._createStory}
+              modal={props.modal} 
             />}
             {!user ? <p>Loading</p> : 
               <UserStoryList 
               comments={props.comments} 
               user={user} 
-              stories={props.stories} 
-              _toggle={props._toggle} 
+              stories={props.stories}
+              _deleteStory={props._deleteStory}
               _patchStory={props._patchStory} 
-              modal={props.modal}
             />}
           </Col>
         </Row>

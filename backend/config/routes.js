@@ -8,8 +8,8 @@ module.exports = function(app){
 
   app.get('/stories', stories.index);
   app.post('/stories', stories.create);
-  app.patch('/stories', stories.edit);
-  app.delete('/stories', stories.delete);
+  app.patch('/stories/:id', stories.edit);
+  app.delete('/stories/:id', stories.delete);
 
   app.get('/comments', comments.index);
   app.get('/subscribe', subscribe.index);

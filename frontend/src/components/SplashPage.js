@@ -6,14 +6,14 @@ import { Row, Col, Container } from 'reactstrap';
 const SplashPage = (props) => {
   return (
     <div>
-    <Header/>
-    <Container>
-    <Row className='col-6'>
-    <Col>
-    <Login authors={props.authors} history={props.history}/>
-    </Col>
-    </Row>
-    </Container>
+      <Header/>
+      <Container>
+        <Row className='col-6'>
+          <Col>
+            <Login authors={props.authors} history={props.history}/>
+          </Col>
+        </Row>
+      </Container>
     </div>
   )
 }
